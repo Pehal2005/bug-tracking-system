@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bugs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🐛 Bug Tracker</h1>
+        <div>
+            <a href="/">Home</a>
+            <a href="/bugs">View Bugs</a>
+            <a href="/report">Report Bug</a>
+        </div>
+    </nav>
+
+    <div class="bugs-container">
+        <h2>📋 All Bugs</h2>
+        <a href="/report" class="btn">+ Report New Bug</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bug in bugs %}
+                <tr>
+                    <td>#{{ bug[0] }}</td>
+                    <td>{{ bug[1] }}</td>
+                    <td>
+                        {% if bug[3] == 'High' %}
+                            🔴 {{ bug[3] }}
+                        {% elif bug[3] == 'Medium' %}
+                            🟡 {{ bug[3] }}
+                        {% else %}
+                            🟢 {{ bug[3] }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span class="status-badge {{ bug[4] | lower }}">
+                            {{ bug[4] }}
+                        </span>
+                    </td>
+                    <td>{{ bug[5] }}</td>
+                    <td>
+                        <form method="POST" action="/update/{{ bug[0] }}">
+                            <select name="status">
+                                <option value="Open">Open</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Fixed">Fixed</option>
+                            </select>
+                            <button type="submit" class="update-btn">Update</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="POST" action="/delete/{{ bug[0] }}">
+                            <button type="submit" class="delete-btn">🗑️ Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

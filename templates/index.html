@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug Tracking System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <h1>🐛 Bug Tracker</h1>
+        <div>
+            <a href="/">Home</a>
+            <a href="/bugs">View Bugs</a>
+            <a href="/report">Report Bug</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <h2>Welcome to Bug Tracking System</h2>
+        <p>Track, manage and fix bugs collaboratively</p>
+        <a href="/report" class="btn">🐛 Report a Bug</a>
+        <a href="/bugs" class="btn btn2">📋 View All Bugs</a>
+    </div>
+
+    <!-- STATS SECTION -->
+    <div class="stats">
+        <div class="stat-card">
+            <h3>0</h3>
+            <p>Total Bugs</p>
+        </div>
+        <div class="stat-card">
+            <h3>0</h3>
+            <p>Open Bugs</p>
+        </div>
+        <div class="stat-card">
+            <h3>0</h3>
+            <p>Fixed Bugs</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Report a Bug</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>🐛 Bug Tracker</h1>
+        <div>
+            <a href="/">Home</a>
+            <a href="/bugs">View Bugs</a>
+            <a href="/report">Report Bug</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h2>🐛 Report a New Bug</h2>
+        <form method="POST">
+            <label>Bug Title</label>
+            <input type="text" name="title" placeholder="Enter bug title" required>
+
+            <label>Description</label>
+            <textarea name="description" placeholder="Describe the bug..." required></textarea>
+
+            <label>Priority</label>
+            <select name="priority">
+                <option value="Low">🟢 Low</option>
+                <option value="Medium">🟡 Medium</option>
+                <option value="High">🔴 High</option>
+            </select>
+
+            <button type="submit">Submit Bug</button>
+        </form>
+    </div>
+
+</body>
+</html>
